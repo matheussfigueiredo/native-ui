@@ -1,0 +1,12 @@
+{
+  "dependencies": {
+    "@gorhom/bottom-sheet": "^5"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "2.1.2",
+    "ultracite": "5.0.46"
+  },
+  "peerDependencies": {
+    "typescript": "^5.8.3"
+  }
+}
