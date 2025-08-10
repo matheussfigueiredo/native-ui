@@ -1,0 +1,130 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "name": "nativeui",
+  "homepage": "https://github.com/matheussfigueiredo/native-ui",
+  "dependencies": ["react-native", "native-variants"],
+  "items": [
+    {
+      "name": "Components",
+      "type": "registry:ui",
+      "files": [
+        {
+          "path": "src/components/badge.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/avatar.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/button.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/card.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/collapsible.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/drawer.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/flex.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/form.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/icon.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/input.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/progress.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/radio.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/scroll-area.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/select.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/separator.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/skeleton.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/slot.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/switch.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/tabs.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/textarea.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/typography.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "Library",
+      "type": "registry:lib",
+      "files": [
+        {
+          "path": "src/lib/cn.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "src/lib/nva.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "src/lib/icon.json",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "Hooks",
+      "type": "registry:hook",
+      "files": [
+        {
+          "path": "src/hook/use-disclosure.ts",
+          "type": "registry:hook"
+        },
+        {
+          "path": "src/hook/use-interactive.ts",
+          "type": "registry:hook"
+        }
+      ]
+    }
+  ]
+}
