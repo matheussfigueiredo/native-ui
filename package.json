@@ -1,12 +1,25 @@
 {
+  "name": "native-ui",
+  "description": "Reusable component library for React Native with shadcn/ui support. Perfect for Expo projects and fast development with consistent design.",
   "dependencies": {
     "@gorhom/bottom-sheet": "^5"
   },
+  "workspaces": [
+    "packages/*"
+  ],
   "devDependencies": {
     "@biomejs/biome": "2.1.2",
     "ultracite": "5.0.46"
   },
   "peerDependencies": {
     "typescript": "^5.8.3"
-  }
+  },
+  "keywords": [
+    "ui",
+    "react",
+    "icons",
+    "shadcn-cli",
+    "react-native",
+    "native-variants"
+  ]
 }
