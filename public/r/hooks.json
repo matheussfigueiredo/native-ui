@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "hooks",
+  "type": "registry:hook",
+  "dependencies": [
+    "react",
+    "react-native"
+  ],
+  "files": [
+    {
+      "path": "packages/ui/src/hooks/use-disclosure.ts",
+      "content": "import React from \"react\";\r\n\r\ninterface DisclosureHookProps {\r\n  init?: boolean;\r\n}\r\n\r\nexport function useDisclosure(props?: DisclosureHookProps) {\r\n  const init = props?.init ?? false;\r\n  const [collapse, setCollapse] = React.useState<boolean>(init);\r\n\r\n  const onCollapse = () => {\r\n    setCollapse(!collapse);\r\n  };\r\n\r\n  return { collapse, setCollapse, onCollapse };\r\n}\r\n",
+      "type": "registry:hook"
+    },
+    {
+      "path": "packages/ui/src/hooks/use-interactive.ts",
+      "content": "import React from \"react\";\r\nimport { Keyboard } from \"react-native\";\r\n\r\nexport function useInteractive() {\r\n  const [focus, setFocus] = React.useState<boolean>(false);\r\n\r\n  function onFocus() {\r\n    setFocus(true);\r\n  }\r\n\r\n  function onBlur() {\r\n    setFocus(false);\r\n    requestAnimationFrame(() => {\r\n      Keyboard.dismiss();\r\n    });\r\n  }\r\n\r\n  return { focus, onFocus, onBlur };\r\n}\r\n",
+      "type": "registry:hook"
+    }
+  ]
+}

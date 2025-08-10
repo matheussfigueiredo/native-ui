@@ -1,0 +1,139 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "name": "nativeui",
+  "homepage": "https://github.com/matheussfigueiredo/native-ui",
+  "items": [
+    {
+      "name": "components",
+      "type": "registry:ui",
+      "dependencies": [
+        "react-native",
+        "native-variants",
+        "@gorhom/bottom-sheet",
+        "@hookform/resolvers",
+        "react-hook-form",
+        "react-native-svg"
+      ],
+      "files": [
+        {
+          "path": "packages/ui/src/components/badge.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "packages/ui/src/components/avatar.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "packages/ui/src/components/button.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "packages/ui/src/components/card.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "packages/ui/src/components/collapsible.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "packages/ui/src/components/drawer.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "packages/ui/src/components/flex.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "packages/ui/src/components/form.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "packages/ui/src/components/icon.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "packages/ui/src/components/input.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "packages/ui/src/components/progress.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "packages/ui/src/components/radio.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "packages/ui/src/components/scroll-area.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "packages/ui/src/components/select.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "packages/ui/src/components/separator.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "packages/ui/src/components/skeleton.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "packages/ui/src/components/slot.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "packages/ui/src/components/switch.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "packages/ui/src/components/tabs.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "packages/ui/src/components/textarea.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "packages/ui/src/components/typography.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "lib",
+      "type": "registry:lib",
+      "dependencies": ["native-variants", "react-native"],
+      "files": [
+        {
+          "path": "packages/ui/src/lib/cn.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "packages/ui/src/lib/nva.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "packages/ui/src/lib/icons.json",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "hooks",
+      "type": "registry:hook",
+      "dependencies": ["react", "react-native"],
+      "files": [
+        {
+          "path": "packages/ui/src/hooks/use-disclosure.ts",
+          "type": "registry:hook"
+        },
+        {
+          "path": "packages/ui/src/hooks/use-interactive.ts",
+          "type": "registry:hook"
+        }
+      ]
+    }
+  ]
+}
