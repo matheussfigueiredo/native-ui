@@ -4,9 +4,10 @@
   "type": "registry:lib",
   "title": "cn",
   "description": "Utility for classNames",
+  "dependencies": ["react-native", "native-variants", "react"],
   "files": [
     {
-      "path": "packages/ui/src/lib/cn.ts",
+      "path": "lib/cn.ts",
       "content": "import { StyleProp } from \"react-native\";\r\n\r\nfunction flattenStyle<T>(style: StyleProp<T>): T[] {\r\n  if (!style) return [];\r\n  if (Array.isArray(style)) {\r\n    return style.flat\r\n      ? (style.flat().filter(Boolean) as T[])\r\n      : (style.filter(Boolean) as T[]);\r\n  }\r\n  // @ts-ignore\r\n  return [style];\r\n}\r\n\r\nexport function cn<T extends object>(...styles: StyleProp<T>[]): T {\r\n  return styles\r\n    .flatMap(flattenStyle)\r\n    .filter((s): s is T => !!s)\r\n    .reduce<T>((acc, style) => ({ ...acc, ...style }), {} as T);\r\n}\r\n",
       "type": "registry:lib"
     }

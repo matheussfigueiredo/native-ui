@@ -4,9 +4,10 @@
   "type": "registry:ui",
   "title": "radio",
   "description": "Radio component",
+  "dependencies": ["react-native", "native-variants", "react"],
   "files": [
     {
-      "path": "packages/ui/src/components/radio.tsx",
+      "path": "components/ui/radio.tsx",
       "content": "import { cn } from \"@/lib/cn\";\r\nimport { styled } from \"@/lib/nva\";\r\nimport { type ComponentProps, memo } from \"react\";\r\nimport { TouchableOpacity, View } from \"react-native\";\r\n\r\nconst radioVariants = styled((ctx, t) =>\r\n  ctx({\r\n    slots: [\"root\", \"indicator\"],\r\n    base: {\r\n      root: {\r\n        width: 22,\r\n        height: 22,\r\n        borderWidth: 2,\r\n        display: \"flex\",\r\n        alignItems: \"center\",\r\n        flexDirection: \"column\",\r\n        justifyContent: \"center\",\r\n        borderRadius: t.radii.full,\r\n      },\r\n      indicator: {\r\n        padding: 1,\r\n        minWidth: 12,\r\n        minHeight: 12,\r\n        overflow: \"hidden\",\r\n        borderRadius: t.radii.full,\r\n      },\r\n    },\r\n    variants: {\r\n      active: {\r\n        true: {\r\n          root: {\r\n            borderColor: t.colors.primary,\r\n          },\r\n          indicator: {\r\n            backgroundColor: t.colors.primary,\r\n          },\r\n        },\r\n        false: {\r\n          root: {\r\n            borderColor: t.colors.input,\r\n          },\r\n          indicator: {\r\n            backgroundColor: t.colors.transparent,\r\n          },\r\n        },\r\n      },\r\n    },\r\n    defaultVariants: {\r\n      active: false,\r\n    },\r\n  })\r\n);\r\n\r\nfunction RadioComponent({\r\n  style,\r\n  value: active,\r\n  ...props\r\n}: ComponentProps<typeof TouchableOpacity> & {\r\n  value?: boolean;\r\n}) {\r\n  const styles = radioVariants({ active });\r\n\r\n  return (\r\n    <TouchableOpacity style={cn(styles.root, style)} {...props}>\r\n      <View style={styles.indicator} />\r\n    </TouchableOpacity>\r\n  );\r\n}\r\n\r\nconst Radio = memo(RadioComponent);\r\n\r\nexport { Radio };\r\n",
       "type": "registry:ui"
     }

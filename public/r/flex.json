@@ -4,9 +4,10 @@
   "type": "registry:ui",
   "title": "flex",
   "description": "Flex component",
+  "dependencies": ["react-native", "native-variants", "react"],
   "files": [
     {
-      "path": "packages/ui/src/components/flex.tsx",
+      "path": "components/ui/flex.tsx",
       "content": "import { cn } from \"@/lib/cn\";\r\nimport type { VariantProps } from \"native-variants\";\r\nimport { styled } from \"@/lib/nva\";\r\nimport { type ComponentProps, memo } from \"react\";\r\nimport { View } from \"react-native\";\r\n\r\nconst flexVariants = styled((ctx, _) =>\r\n  ctx({\r\n    slots: [\"root\"],\r\n    base: {\r\n      root: {\r\n        display: \"flex\",\r\n      },\r\n    },\r\n    variants: {\r\n      vertical: {\r\n        true: { root: { flexDirection: \"column\" } },\r\n        false: { root: { flexDirection: \"row\" } },\r\n      },\r\n      align: {\r\n        end: { root: { alignItems: \"flex-end\" } },\r\n        center: { root: { alignItems: \"center\" } },\r\n        stretch: { root: { alignItems: \"stretch\" } },\r\n        start: { root: { alignItems: \"flex-start\" } },\r\n        baseline: { root: { alignItems: \"baseline\" } },\r\n      },\r\n      justify: {\r\n        end: { root: { justifyContent: \"flex-end\" } },\r\n        center: { root: { justifyContent: \"center\" } },\r\n        start: { root: { justifyContent: \"flex-start\" } },\r\n        between: { root: { justifyContent: \"space-between\" } },\r\n        evenly: { root: { justifyContent: \"space-evenly\" } },\r\n        around: { root: { justifyContent: \"space-around\" } },\r\n      },\r\n    },\r\n    defaultVariants: {\r\n      vertical: false,\r\n      align: \"start\",\r\n      justify: \"start\",\r\n    },\r\n  })\r\n);\r\n\r\nfunction FlexComponent({\r\n  style,\r\n  align,\r\n  justify,\r\n  vertical,\r\n  noWrap = false,\r\n  ...props\r\n}: {\r\n  noWrap?: boolean;\r\n} & ComponentProps<typeof View> &\r\n  VariantProps<typeof flexVariants>) {\r\n  const styles = flexVariants({ align, justify, vertical });\r\n\r\n  return (\r\n    <View\r\n      style={cn(\r\n        styles.root,\r\n        style,\r\n        noWrap && {\r\n          flexWrap: \"nowrap\",\r\n        }\r\n      )}\r\n      {...props}\r\n    />\r\n  );\r\n}\r\n\r\nconst Flex = memo(FlexComponent);\r\n\r\nexport { Flex };\r\n",
       "type": "registry:ui"
     }
