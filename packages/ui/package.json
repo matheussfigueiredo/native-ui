@@ -1,14 +1,18 @@
 {
   "name": "ui",
   "type": "module",
+  "scripts": {
+    "registry:build": "shadcn build"
+  },
   "dependencies": {
-    "react-hook-form": "^7.62.0",
     "@gorhom/bottom-sheet": "^5.1.8",
     "@hookform/resolvers": "^5.2.1",
     "native-variants": "^0.1.54",
     "react": "19.0.0",
     "react-dom": "19.0.0",
+    "react-hook-form": "^7.62.0",
     "react-native": "0.80.2",
+    "shadcn": "^2.9.3-canary.0",
     "zod": "^4.0.14"
   },
   "devDependencies": {
