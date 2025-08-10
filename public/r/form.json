@@ -4,7 +4,13 @@
   "type": "registry:ui",
   "title": "form",
   "description": "Form component",
-  "dependencies": ["react-native", "native-variants", "react"],
+  "dependencies": [
+    "react-native",
+    "native-variants",
+    "react",
+    "@hookform/resolvers",
+    "react-hook-form"
+  ],
   "files": [
     {
       "path": "components/ui/form.tsx",

@@ -4,7 +4,12 @@
   "type": "registry:ui",
   "title": "icon",
   "description": "Icon component",
-  "dependencies": ["react-native", "native-variants", "react"],
+  "dependencies": [
+    "react-native",
+    "native-variants",
+    "react-native-svg",
+    "react"
+  ],
   "files": [
     {
       "path": "components/ui/icon.tsx",

@@ -4,7 +4,13 @@
   "type": "registry:ui",
   "title": "drawer",
   "description": "Drawer component",
-  "dependencies": ["react-native", "native-variants", "react"],
+  "dependencies": [
+    "react-native",
+    "native-variants",
+    "react",
+    "@gorhom/bottom-sheet",
+    "react-native-safe-area-context"
+  ],
   "files": [
     {
       "path": "components/ui/drawer.tsx",
