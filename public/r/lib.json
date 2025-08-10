@@ -2,10 +2,7 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "lib",
   "type": "registry:lib",
-  "dependencies": [
-    "native-variants",
-    "react-native"
-  ],
+  "dependencies": ["native-variants", "react-native"],
   "files": [
     {
       "path": "packages/ui/src/lib/cn.ts",
