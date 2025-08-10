@@ -1,0 +1,14 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "separator",
+  "type": "registry:ui",
+  "title": "separator",
+  "description": "Separator component",
+  "files": [
+    {
+      "path": "packages/ui/src/components/separator.tsx",
+      "content": "import { cn } from \"@/lib/cn\";\r\nimport { type VariantProps } from \"native-variants\";\r\nimport { styled } from \"@/lib/nva\";\r\nimport { type ComponentProps } from \"react\";\r\nimport { View } from \"react-native\";\r\n\r\nconst separatorVariants = styled((ctx, t) =>\r\n  ctx({\r\n    slots: [\"root\"],\r\n    base: {\r\n      root: {\r\n        backgroundColor: t.colors.border,\r\n      },\r\n    },\r\n    variants: {\r\n      orientation: {\r\n        vertical: {\r\n          root: {\r\n            height: \"100%\",\r\n            width: 0.5,\r\n          },\r\n        },\r\n        horizontal: {\r\n          root: {\r\n            width: \"100%\",\r\n            height: 0.5,\r\n          },\r\n        },\r\n      },\r\n    },\r\n    defaultVariants: {\r\n      orientation: \"horizontal\",\r\n    },\r\n  })\r\n);\r\n\r\nfunction Separator({\r\n  style,\r\n  orientation,\r\n  ...props\r\n}: ComponentProps<typeof View> & VariantProps<typeof separatorVariants>) {\r\n  const styles = separatorVariants({ orientation });\r\n\r\n  return <View style={cn(styles.root, style)} {...props} />;\r\n}\r\n\r\nexport { Separator };\r\n",
+      "type": "registry:ui"
+    }
+  ]
+}

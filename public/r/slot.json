@@ -1,0 +1,14 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "slot",
+  "type": "registry:ui",
+  "title": "slot",
+  "description": "Slot component",
+  "files": [
+    {
+      "path": "packages/ui/src/components/slot.tsx",
+      "content": "import { composeRefs } from \"native-variants\";\r\nimport {\r\n  cloneElement,\r\n  forwardRef,\r\n  isValidElement,\r\n  type ReactElement,\r\n} from \"react\";\r\n\r\nexport interface SlotProps {\r\n  children: ReactElement<any>;\r\n  [key: string]: any;\r\n}\r\n\r\nconst Slot = forwardRef<unknown, SlotProps>(function Slot(props, ref) {\r\n  const { children, ...restProps } = props;\r\n\r\n  if (!isValidElement(children)) {\r\n    console.warn(\"Slot requires a single valid React element as its child.\");\r\n    return null;\r\n  }\r\n\r\n  const childProps = children.props as Record<string, any>;\r\n  const childRef = (children as any).ref;\r\n\r\n  return cloneElement(children, {\r\n    ...restProps,\r\n    ref: composeRefs(childRef, ref),\r\n    style: [childProps.style, restProps.style].filter(Boolean),\r\n    className: [childProps.className, restProps.className]\r\n      .filter(Boolean)\r\n      .join(\" \"),\r\n  } as any);\r\n});\r\n\r\nexport { Slot };\r\n",
+      "type": "registry:ui"
+    }
+  ]
+}

@@ -4,37 +4,313 @@
   "homepage": "https://github.com/matheussfigueiredo/native-ui",
   "items": [
     {
-      "name": "components",
-      "type": "registry:block",
-      "title": "Components",
-      "description": "UI components for your project.",
+      "name": "avatar",
+      "title": "Avatar",
+      "type": "registry:ui",
+      "description": "Avatar component",
       "files": [
         {
-          "path": "packages/ui/public/r/components.json",
-          "type": "registry:component"
+          "path": "packages/ui/src/components/avatar.tsx",
+          "type": "registry:ui"
         }
       ]
     },
     {
-      "name": "lib",
-      "type": "registry:lib",
-      "title": "Library",
-      "description": "Utility functions and helpers.",
+      "name": "badge",
+      "title": "Badge",
+      "type": "registry:ui",
+      "description": "Badge component",
       "files": [
         {
-          "path": "packages/ui/public/r/lib.json",
+          "path": "packages/ui/src/components/badge.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "button",
+      "title": "button",
+      "type": "registry:ui",
+      "description": "Button component",
+      "files": [
+        {
+          "path": "packages/ui/src/components/button.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "card",
+      "title": "card",
+      "type": "registry:ui",
+      "description": "Card component",
+      "files": [
+        {
+          "path": "packages/ui/src/components/card.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "collapsible",
+      "title": "collapsible",
+      "type": "registry:ui",
+      "description": "Collapsible component",
+      "files": [
+        {
+          "path": "packages/ui/src/components/collapsible.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "drawer",
+      "title": "drawer",
+      "type": "registry:ui",
+      "description": "Drawer component",
+      "files": [
+        {
+          "path": "packages/ui/src/components/drawer.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "flex",
+      "title": "flex",
+      "type": "registry:ui",
+      "description": "Flex component",
+      "files": [
+        {
+          "path": "packages/ui/src/components/flex.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "form",
+      "title": "form",
+      "type": "registry:ui",
+      "description": "Form component",
+      "files": [
+        {
+          "path": "packages/ui/src/components/form.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "icon",
+      "title": "icon",
+      "type": "registry:ui",
+      "description": "Icon component",
+      "files": [
+        {
+          "path": "packages/ui/src/components/icon.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "input",
+      "title": "input",
+      "type": "registry:ui",
+      "description": "Input component",
+      "files": [
+        {
+          "path": "packages/ui/src/components/input.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "progress",
+      "title": "progress",
+      "type": "registry:ui",
+      "description": "Progress component",
+      "files": [
+        {
+          "path": "packages/ui/src/components/progress.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "radio",
+      "title": "radio",
+      "type": "registry:ui",
+      "description": "Radio component",
+      "files": [
+        {
+          "path": "packages/ui/src/components/radio.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "scrollArea",
+      "title": "scrollArea",
+      "type": "registry:ui",
+      "description": "ScrollArea component",
+      "files": [
+        {
+          "path": "packages/ui/src/components/scroll-area.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "select",
+      "title": "select",
+      "type": "registry:ui",
+      "description": "Select component",
+      "files": [
+        {
+          "path": "packages/ui/src/components/select.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "separator",
+      "title": "separator",
+      "type": "registry:ui",
+      "description": "Separator component",
+      "files": [
+        {
+          "path": "packages/ui/src/components/separator.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "skeleton",
+      "title": "skeleton",
+      "type": "registry:ui",
+      "description": "Skeleton component",
+      "files": [
+        {
+          "path": "packages/ui/src/components/skeleton.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "slot",
+      "title": "slot",
+      "type": "registry:ui",
+      "description": "Slot component",
+      "files": [
+        {
+          "path": "packages/ui/src/components/slot.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "switch",
+      "title": "switch",
+      "type": "registry:ui",
+      "description": "Switch component",
+      "files": [
+        {
+          "path": "packages/ui/src/components/switch.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "tabs",
+      "title": "tabs",
+      "type": "registry:ui",
+      "description": "Tabs component",
+      "files": [
+        {
+          "path": "packages/ui/src/components/tabs.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "textarea",
+      "title": "textarea",
+      "type": "registry:ui",
+      "description": "TextArea component",
+      "files": [
+        {
+          "path": "packages/ui/src/components/textarea.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "typography",
+      "title": "typography",
+      "type": "registry:ui",
+      "description": "Typography component",
+      "files": [
+        {
+          "path": "packages/ui/src/components/typography.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "cn",
+      "title": "cn",
+      "type": "registry:lib",
+      "description": "Utility for classNames",
+      "files": [
+        {
+          "path": "packages/ui/src/lib/cn.ts",
           "type": "registry:lib"
         }
       ]
     },
     {
-      "name": "hooks",
-      "type": "registry:hook",
-      "title": "Custom Hooks",
-      "description": "React hooks for your project.",
+      "name": "nva",
+      "title": "nva",
+      "type": "registry:lib",
+      "description": "Utility for variant classNames",
       "files": [
         {
-          "path": "packages/ui/public/r/hooks.json",
+          "path": "packages/ui/src/lib/nva.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "icons",
+      "title": "icons",
+      "type": "registry:lib",
+      "description": "Icons definitions",
+      "files": [
+        {
+          "path": "packages/ui/src/lib/icons.json",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "use-disclosure",
+      "title": "use-disclosure",
+      "type": "registry:hook",
+      "description": "Hook para controle de disclosure",
+      "files": [
+        {
+          "path": "packages/ui/src/hooks/use-disclosure.ts",
+          "type": "registry:hook"
+        }
+      ]
+    },
+    {
+      "name": "use-interactive",
+      "title": "use-interactive",
+      "type": "registry:hook",
+      "description": "Hook para interatividade",
+      "files": [
+        {
+          "path": "packages/ui/src/hooks/use-interactive.ts",
           "type": "registry:hook"
         }
       ]

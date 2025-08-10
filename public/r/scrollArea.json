@@ -1,0 +1,14 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "scrollArea",
+  "type": "registry:ui",
+  "title": "scrollArea",
+  "description": "ScrollArea component",
+  "files": [
+    {
+      "path": "packages/ui/src/components/scroll-area.tsx",
+      "content": "import { type ComponentProps } from \"react\";\r\nimport { ScrollView } from \"react-native\";\r\n\r\nfunction ScrollArea({ ...props }: ComponentProps<typeof ScrollView>) {\r\n  return (\r\n    <ScrollView\r\n      showsVerticalScrollIndicator={false}\r\n      showsHorizontalScrollIndicator={false}\r\n      {...props}\r\n    />\r\n  );\r\n}\r\n\r\nexport { ScrollArea };\r\n",
+      "type": "registry:ui"
+    }
+  ]
+}

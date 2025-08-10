@@ -1,0 +1,14 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "icon",
+  "type": "registry:ui",
+  "title": "icon",
+  "description": "Icon component",
+  "files": [
+    {
+      "path": "packages/ui/src/components/icon.tsx",
+      "content": "import glyphmaps_icon from \"@/lib/icons.json\";\r\nimport { View, type ColorValue } from \"react-native\";\r\nimport { SvgXml } from \"react-native-svg\";\r\nimport { styled, theme } from \"@/lib/nva\";\r\nimport { type ComponentProps, memo } from \"react\";\r\nimport { cn } from \"@/lib/cn\";\r\nimport { useTypography } from \"./typography\";\r\n\r\nconst iconVariants = styled((ctx, t) =>\r\n  ctx({\r\n    slots: [\"root\"],\r\n    base: {\r\n      root: {\r\n        display: \"flex\",\r\n        justifyContent: \"center\",\r\n        alignItems: \"center\",\r\n      },\r\n    },\r\n  })\r\n);\r\n\r\nfunction getIconColor(\r\n  color: string | ColorValue | undefined,\r\n  ctxStyles: any\r\n): ColorValue {\r\n  return color ?? ctxStyles?.color ?? theme.colors.primary;\r\n}\r\n\r\ntype IconGlyphmap = keyof typeof glyphmaps_icon;\r\n\r\nfunction IconComponent({\r\n  name,\r\n  size = 20,\r\n  color,\r\n  style,\r\n  ...props\r\n}: ComponentProps<typeof View> & {\r\n  size?: number;\r\n  name: IconGlyphmap;\r\n  color?: string | ColorValue;\r\n}) {\r\n  const styles = iconVariants();\r\n  const ctxStyles = useTypography();\r\n  const xml = glyphmaps_icon[name!];\r\n\r\n  if (!xml) {\r\n    return null;\r\n  }\r\n\r\n  return (\r\n    <View style={cn(styles.root, style)} {...props}>\r\n      <SvgXml\r\n        xml={xml}\r\n        width={size}\r\n        height={size}\r\n        color={getIconColor(color, ctxStyles)}\r\n      />\r\n    </View>\r\n  );\r\n}\r\n\r\nconst Icon = memo(IconComponent);\r\n\r\nexport { Icon };\r\n",
+      "type": "registry:ui"
+    }
+  ]
+}

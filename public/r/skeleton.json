@@ -1,0 +1,14 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "skeleton",
+  "type": "registry:ui",
+  "title": "skeleton",
+  "description": "Skeleton component",
+  "files": [
+    {
+      "path": "packages/ui/src/components/skeleton.tsx",
+      "content": "import { LinearGradient } from \"expo-linear-gradient\";\r\nimport { StyleSheet, View } from \"react-native\";\r\nimport Animated, {\r\n  useAnimatedStyle,\r\n  useSharedValue,\r\n  withRepeat,\r\n  withTiming,\r\n} from \"react-native-reanimated\";\r\nimport { styled, theme } from \"@/lib/nva\";\r\nimport { type ComponentProps, useEffect } from \"react\";\r\nimport { cn } from \"@/lib/cn\";\r\n\r\nconst skeletonVariants = styled((ctx, t) =>\r\n  ctx({\r\n    slots: [\"root\", \"wrapper\", \"content\"],\r\n    base: {\r\n      root: {\r\n        backgroundColor: theme.colors.ring,\r\n        overflow: \"hidden\",\r\n      },\r\n      wrapper: {\r\n        position: \"absolute\",\r\n        top: 0,\r\n        bottom: 0,\r\n        left: 0,\r\n      },\r\n      content: {\r\n        opacity: t.opacity[\"0\"],\r\n      },\r\n    },\r\n  })\r\n);\r\n\r\nfunction Skeleton({\r\n  width,\r\n  height,\r\n  radius = 6,\r\n  children,\r\n  ...props\r\n}: ComponentProps<typeof View> & {\r\n  width?: string | number;\r\n  height?: string | number;\r\n  radius?: number;\r\n}) {\r\n  const styles = skeletonVariants();\r\n  const widthNumber = typeof width === \"number\" ? width : 200;\r\n  const shimmerWidth = widthNumber * 0.6;\r\n  const translateX = useSharedValue(-shimmerWidth);\r\n\r\n  useEffect(() => {\r\n    translateX.value = withRepeat(\r\n      withTiming(widthNumber + shimmerWidth, { duration: 1500 }),\r\n      -1,\r\n      false\r\n    );\r\n  }, []);\r\n\r\n  const animatedStyle = useAnimatedStyle(() => ({\r\n    transform: [{ translateX: translateX.value }],\r\n  }));\r\n\r\n  return (\r\n    <View\r\n      //@ts-ignore\r\n      style={cn(styles.root, { width, height, borderRadius: radius })}\r\n      {...props}\r\n    >\r\n      <Animated.View style={cn(styles.wrapper, animatedStyle)}>\r\n        <LinearGradient\r\n          colors={[theme.colors.ring, theme.colors.input, theme.colors.ring]}\r\n          start={{ x: 0, y: 0 }}\r\n          end={{ x: 1, y: 0 }}\r\n          style={[StyleSheet.absoluteFill, { width: \"100%\" }]}\r\n        />\r\n      </Animated.View>\r\n      <View style={styles.content}>{children}</View>\r\n    </View>\r\n  );\r\n}\r\n\r\nexport { Skeleton };\r\n",
+      "type": "registry:ui"
+    }
+  ]
+}

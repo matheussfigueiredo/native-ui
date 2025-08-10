@@ -1,0 +1,14 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "progress",
+  "type": "registry:ui",
+  "title": "progress",
+  "description": "Progress component",
+  "files": [
+    {
+      "path": "packages/ui/src/components/progress.tsx",
+      "content": "import { cn } from \"@/lib/cn\";\r\nimport { type VariantProps } from \"native-variants\";\r\nimport { styled } from \"@/lib/nva\";\r\nimport { View, Text } from \"react-native\";\r\nimport { type ComponentProps } from \"react\";\r\n\r\ntype CommonProps = {\r\n  min: number;\r\n  value: number;\r\n  max: number;\r\n};\r\n\r\nconst progressVariants = styled((ctx, t) =>\r\n  ctx({\r\n    slots: [\"root\", \"wrapper\", \"bar\", \"label\"],\r\n    base: {\r\n      root: {\r\n        width: \"100%\",\r\n        display: \"flex\",\r\n        overflow: \"hidden\",\r\n        gap: t.spacing[\"1\"],\r\n        flexDirection: \"column\",\r\n      },\r\n      wrapper: {\r\n        borderRadius: t.radii.full,\r\n        backgroundColor: t.colors.input,\r\n      },\r\n      bar: {\r\n        height: \"100%\",\r\n        borderRadius: t.radii.full,\r\n        backgroundColor: t.colors.primary,\r\n      },\r\n      label: {\r\n        textAlign: \"right\",\r\n        fontSize: t.fontSizes.xxs,\r\n        color: t.colors.mutedForeground,\r\n      },\r\n    },\r\n    variants: {\r\n      size: {\r\n        default: {\r\n          wrapper: {\r\n            height: 8,\r\n          },\r\n        },\r\n        sm: {\r\n          wrapper: {\r\n            height: 6,\r\n          },\r\n        },\r\n        lg: {\r\n          wrapper: {\r\n            height: 10,\r\n          },\r\n        },\r\n      },\r\n    },\r\n    defaultVariants: {\r\n      size: \"default\",\r\n    },\r\n  })\r\n);\r\n\r\nfunction getProgressValue(config: CommonProps): number {\r\n  const { max, min, value } = config;\r\n\r\n  const clampedValue = Math.min(Math.max(value, min), max);\r\n  return max - min === 0 ? 0 : (clampedValue - min) / (max - min);\r\n}\r\n\r\nfunction Progress({\r\n  min = 0,\r\n  value = 0,\r\n  max = 100,\r\n  size,\r\n  ...props\r\n}: ComponentProps<typeof View> &\r\n  CommonProps &\r\n  VariantProps<typeof progressVariants>) {\r\n  const styles = progressVariants({ size });\r\n  const progress = getProgressValue({ min, value, max });\r\n\r\n  return (\r\n    <View style={styles.root} {...props}>\r\n      <View style={styles.wrapper}>\r\n        <View style={cn(styles.bar, { width: `${progress * 100}%` })} />\r\n      </View>\r\n      <Text style={styles.label}>{`${value} / ${max}`}</Text>\r\n    </View>\r\n  );\r\n}\r\n\r\nexport { Progress };\r\n",
+      "type": "registry:ui"
+    }
+  ]
+}
