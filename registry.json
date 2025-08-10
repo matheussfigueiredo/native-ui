@@ -5,18 +5,39 @@
   "items": [
     {
       "name": "components",
-      "type": "registry:ui",
-      "registry": "https://raw.githubusercontent.com/matheussfigueiredo/native-ui/main/packages/ui/public/r/components.json"
+      "type": "registry:block",
+      "title": "Components",
+      "description": "UI components for your project.",
+      "files": [
+        {
+          "path": "packages/ui/public/r/components.json",
+          "type": "registry:component"
+        }
+      ]
     },
     {
       "name": "lib",
       "type": "registry:lib",
-      "registry": "https://raw.githubusercontent.com/matheussfigueiredo/native-ui/main/packages/ui/public/r/lib.json"
+      "title": "Library",
+      "description": "Utility functions and helpers.",
+      "files": [
+        {
+          "path": "packages/ui/public/r/lib.json",
+          "type": "registry:lib"
+        }
+      ]
     },
     {
       "name": "hooks",
       "type": "registry:hook",
-      "registry": "https://raw.githubusercontent.com/matheussfigueiredo/native-ui/main/packages/ui/public/r/hooks.json"
+      "title": "Custom Hooks",
+      "description": "React hooks for your project.",
+      "files": [
+        {
+          "path": "packages/ui/public/r/hooks.json",
+          "type": "registry:hook"
+        }
+      ]
     }
   ]
 }
