@@ -1,69 +1,69 @@
+import { cn } from '@/lib/cn'
+import { styled } from '@/lib/nva'
+import { createCTX } from 'native-variants'
 import {
-  PropsWithChildren,
-  useRef,
-  useEffect,
-  useCallback,
   type ComponentProps,
-} from "react";
-import { View, Text, TextInput, Pressable } from "react-native";
-import { styled } from "@/lib/nva";
-import { cn } from "@/lib/cn";
-import { type VariantProps, createCTX } from "native-variants";
+  PropsWithChildren,
+  useCallback,
+  useEffect,
+  useRef,
+} from 'react'
+import { Pressable, Text, TextInput, View } from 'react-native'
 
 type CommonProps = {
-  value: string;
-  setValue: (next: string) => void;
-  maxLength: number;
-  secure?: boolean;
-  disabled?: boolean;
-  focusHidden: () => void;
-};
+  value: string
+  setValue: (next: string) => void
+  maxLength: number
+  secure?: boolean
+  disabled?: boolean
+  focusHidden: () => void
+}
 
-const { CTXProvider, useCTX } = createCTX<CommonProps>();
+const { CTXProvider, useCTX } = createCTX<CommonProps>()
 
 const otpVariants = styled((ctx, t) =>
   ctx({
     slots: [
-      "root",
-      "hiddenInput",
-      "group",
-      "separator",
-      "slot",
-      "slotText",
-      "cursor",
+      'root',
+      'hiddenInput',
+      'group',
+      'separator',
+      'slot',
+      'slotText',
+      'cursor',
     ],
     base: {
       root: {
-        display: "flex",
-        flexDirection: "row",
-        alignItems: "center",
-        gap: t.spacing["2"],
+        display: 'flex',
+        flexDirection: 'row',
+        alignItems: 'center',
+        gap: t.spacing['2'],
       },
       hiddenInput: {
-        position: "absolute",
+        position: 'absolute',
         opacity: 0,
         width: 1,
         height: 1,
       },
       group: {
-        display: "flex",
-        gap: t.spacing["2"],
-        alignItems: "center",
-        flexDirection: "row",
-        justifyContent: "center",
+        display: 'flex',
+        gap: t.spacing['2'],
+        alignItems: 'center',
+        flexDirection: 'row',
+        justifyContent: 'center',
       },
       separator: {
-        marginHorizontal: t.spacing["1"],
+        marginHorizontal: t.spacing['1'],
         color: t.colors.border,
       },
       slot: {
         width: 36,
         height: 36,
         borderWidth: 1,
-        display: "flex",
-        overflow: "hidden",
-        alignItems: "center",
-        justifyContent: "center",
+        display: 'flex',
+        overflow: 'hidden',
+        alignItems: 'center',
+        justifyContent: 'center',
         borderRadius: t.radii.sm,
         borderColor: t.colors.border,
       },
@@ -72,7 +72,7 @@ const otpVariants = styled((ctx, t) =>
       },
       cursor: {
         width: 0.8,
-        height: "60%",
+        height: '60%',
         backgroundColor: t.colors.primary,
       },
     },
@@ -80,16 +80,16 @@ const otpVariants = styled((ctx, t) =>
       disabled: {
         true: {
           root: {
-            opacity: t.opacity["50"],
-            pointerEvents: "none",
-            userSelect: "none",
+            opacity: t.opacity['50'],
+            pointerEvents: 'none',
+            userSelect: 'none',
           },
         },
         false: {
           root: {
-            opacity: t.opacity["100"],
-            pointerEvents: "auto",
-            userSelect: "auto",
+            opacity: t.opacity['100'],
+            pointerEvents: 'auto',
+            userSelect: 'auto',
           },
         },
       },
@@ -109,7 +109,7 @@ const otpVariants = styled((ctx, t) =>
           },
           slotText: {
             color: t.colors.foreground,
-            fontWeight: "600",
+            fontWeight: '600',
           },
         },
         false: {},
@@ -121,7 +121,7 @@ const otpVariants = styled((ctx, t) =>
       filled: false,
     },
   })
-);
+)
 
 function InputOTP({
   value,
@@ -136,42 +136,42 @@ function InputOTP({
 }: PropsWithChildren &
   ComponentProps<typeof Pressable> &
   VariantProps<typeof otpVariants> & {
-    value: string;
-    maxLength: number;
-    secure?: boolean;
-    autoFocus?: boolean;
-    onChange: (input: string) => void;
+    value: string
+    maxLength: number
+    secure?: boolean
+    autoFocus?: boolean
+    onChange: (input: string) => void
   }) {
-  const styles = otpVariants({ disabled });
-  const inputRef = useRef<TextInput>(null);
+  const styles = otpVariants({ disabled })
+  const inputRef = useRef<TextInput>(null)
 
   const normalize = useCallback(
-    (text: string) => text.replace(/\D+/g, "").slice(0, maxLength),
+    (text: string) => text.replace(/\D+/g, '').slice(0, maxLength),
     [maxLength]
-  );
+  )
 
   const setValue = useCallback(
     (text: string) => onChange(normalize(text)),
     [onChange, normalize]
-  );
+  )
 
   const handleChangeText = (text: string) => {
-    setValue(text);
-  };
+    setValue(text)
+  }
 
   const handleKeyPress = (e: any) => {
-    if (e?.nativeEvent?.key === "Backspace" && value.length > 0) {
-      setValue(value.slice(0, -1));
+    if (e?.nativeEvent?.key === 'Backspace' && value.length > 0) {
+      setValue(value.slice(0, -1))
     }
-  };
+  }
 
   const focusHidden = () => {
-    if (!disabled) inputRef.current?.focus();
-  };
+    if (!disabled) inputRef.current?.focus()
+  }
 
   useEffect(() => {
-    if (autoFocus) focusHidden();
-  }, [autoFocus]);
+    if (autoFocus) focusHidden()
+  }, [autoFocus])
 
   return (
     <CTXProvider
@@ -209,7 +209,7 @@ function InputOTP({
         {children}
       </Pressable>
     </CTXProvider>
-  );
+  )
 }
 
 function InputOTPGroup({
@@ -217,12 +217,12 @@ function InputOTPGroup({
   style,
   ...props
 }: ComponentProps<typeof View>) {
-  const styles = otpVariants();
+  const styles = otpVariants()
   return (
     <View style={cn(styles.group, style)} {...props}>
       {children}
     </View>
-  );
+  )
 }
 
 function InputOTPSeparator({
@@ -230,12 +230,12 @@ function InputOTPSeparator({
   style,
   ...props
 }: ComponentProps<typeof Text>) {
-  const styles = otpVariants();
+  const styles = otpVariants()
   return (
     <Text style={cn(styles.separator, style)} {...props}>
       {children}
     </Text>
-  );
+  )
 }
 
 function InputOTPSlot({
@@ -244,34 +244,34 @@ function InputOTPSlot({
   textStyle,
   ...props
 }: ComponentProps<typeof View> & {
-  textStyle?: ComponentProps<typeof Text>["style"];
-  index: number;
+  textStyle?: ComponentProps<typeof Text>['style']
+  index: number
 }) {
-  const ctx = useCTX();
-  const ch = ctx?.value[index] ?? "";
-  const filled = ch !== "";
-  const isLast = index === ctx?.maxLength! - 1;
+  const ctx = useCTX()
+  const ch = ctx?.value[index] ?? ''
+  const filled = ch !== ''
+  const isLast = index === ctx?.maxLength! - 1
   const isCurrent =
     ctx?.value.length === index ||
-    (isLast && ctx?.value.length === ctx?.maxLength);
-  const focused = isCurrent;
+    (isLast && ctx?.value.length === ctx?.maxLength)
+  const focused = isCurrent
 
   const styles = otpVariants({
     focused,
     filled,
     disabled: !!ctx?.disabled,
-  });
+  })
 
   const handlePress = () => {
-    if (!ctx?.disabled) ctx?.focusHidden();
-  };
+    if (!ctx?.disabled) ctx?.focusHidden()
+  }
 
   return (
     <Pressable onPress={handlePress} disabled={ctx?.disabled}>
       <View style={cn(styles.slot, style as any)} {...props}>
         {filled ? (
           <Text style={cn(styles.slotText, textStyle)}>
-            {ctx?.secure ? "•" : ch}
+            {ctx?.secure ? '•' : ch}
           </Text>
         ) : focused ? (
           <View style={styles.cursor} />
@@ -280,7 +280,7 @@ function InputOTPSlot({
         )}
       </View>
     </Pressable>
-  );
+  )
 }
 
-export { InputOTP, InputOTPGroup, InputOTPSeparator, InputOTPSlot };
+export { InputOTP, InputOTPGroup, InputOTPSeparator, InputOTPSlot }

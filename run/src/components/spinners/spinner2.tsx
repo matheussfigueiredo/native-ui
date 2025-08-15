@@ -1,26 +1,26 @@
-import { ComponentProps, memo, useEffect } from "react";
-import { View } from "react-native";
+import { styled } from '@/lib/nva'
+import { type VariantProps } from 'native-variants'
+import { ComponentProps, memo, useEffect } from 'react'
+import { View } from 'react-native'
 import Animated, {
   Easing,
   useAnimatedStyle,
   useSharedValue,
   withRepeat,
   withTiming,
-} from "react-native-reanimated";
-import { styled } from "@/lib/nva";
-import { type VariantProps } from "native-variants";
+} from 'react-native-reanimated'
 
 const spinnerVariants = styled((ctx, t) =>
   ctx({
-    slots: ["root"],
+    slots: ['root'],
     base: {
       root: {
         borderWidth: 3,
         borderRadius: 9999,
         borderTopColor: t.colors.primary,
-        borderRightColor: "transparent",
+        borderRightColor: 'transparent',
         borderBottomColor: t.colors.primary,
-        borderLeftColor: "transparent",
+        borderLeftColor: 'transparent',
       },
     },
     variants: {
@@ -44,18 +44,18 @@ const spinnerVariants = styled((ctx, t) =>
         },
         white: {
           root: {
-            borderTopColor: "#fff",
-            borderBottomColor: "#fff",
+            borderTopColor: '#fff',
+            borderBottomColor: '#fff',
           },
         },
       },
     },
     defaultVariants: {
-      size: "default",
-      color: "primary",
+      size: 'default',
+      color: 'primary',
     },
   })
-);
+)
 
 function SpinnerComponent({
   style,
@@ -64,29 +64,29 @@ function SpinnerComponent({
   duration = 800,
   ...props
 }: ComponentProps<typeof View> & {
-  duration?: number;
+  duration?: number
 } & VariantProps<typeof spinnerVariants>) {
-  const styles = spinnerVariants({ size, color });
+  const styles = spinnerVariants({ size, color })
 
-  const rotation = useSharedValue(0);
+  const rotation = useSharedValue(0)
 
   useEffect(() => {
     rotation.value = withRepeat(
       withTiming(360, { duration, easing: Easing.linear }),
       -1,
       false
-    );
-  }, [duration]);
+    )
+  }, [duration])
 
   const animatedStyle = useAnimatedStyle(() => {
-    return { transform: [{ rotate: `${rotation.value}deg` }] };
-  });
+    return { transform: [{ rotate: `${rotation.value}deg` }] }
+  })
 
   return (
     <Animated.View style={[styles.root, animatedStyle, style]} {...props} />
-  );
+  )
 }
 
-const Spinner2 = memo(SpinnerComponent);
+const Spinner2 = memo(SpinnerComponent)
 
-export { Spinner2 };
+export { Spinner2 }

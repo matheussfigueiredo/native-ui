@@ -1,25 +1,25 @@
-import { type ComponentProps, memo } from "react";
-import { TouchableOpacity } from "react-native";
-import { Slot } from "./slot";
-import { cn } from "@/lib/cn";
-import { styled } from "@/lib/nva";
-import { type VariantProps, composeText } from "native-variants";
-import { TypographyProvider } from "./typography";
+import { cn } from '@/lib/cn'
+import { styled } from '@/lib/nva'
+import { composeText, type VariantProps } from 'native-variants'
+import { type ComponentProps, memo } from 'react'
+import { TouchableOpacity } from 'react-native'
+import { Slot } from './slot'
+import { TypographyProvider } from './typography'
 
 const buttonVariants = styled((ctx, t) =>
   ctx({
-    slots: ["root"],
+    slots: ['root'],
     base: {
       root: {
         borderWidth: 1,
-        display: "flex",
-        fontWeight: "400",
-        textAlign: "center",
-        alignItems: "center",
-        flexDirection: "row",
-        justifyContent: "center",
+        display: 'flex',
+        fontWeight: '400',
+        textAlign: 'center',
+        alignItems: 'center',
+        flexDirection: 'row',
+        justifyContent: 'center',
         borderRadius: t.radii.lg,
-        textAlignVertical: "center",
+        textAlignVertical: 'center',
       },
     },
     variants: {
@@ -64,7 +64,7 @@ const buttonVariants = styled((ctx, t) =>
         default: {
           root: {
             height: 40,
-            paddingHorizontal: t.spacing["3.5"],
+            paddingHorizontal: t.spacing['3.5'],
             fontSize: t.fontSizes.sm,
           },
         },
@@ -72,21 +72,21 @@ const buttonVariants = styled((ctx, t) =>
           root: {
             height: 38,
             fontSize: t.fontSizes.xs,
-            paddingHorizontal: t.spacing["2.5"],
+            paddingHorizontal: t.spacing['2.5'],
           },
         },
         lg: {
           root: {
             height: 44,
             fontSize: t.fontSizes.sm,
-            paddingHorizontal: t.spacing["2.5"],
+            paddingHorizontal: t.spacing['2.5'],
           },
         },
         icon: {
           root: {
             width: 40,
             height: 40,
-            padding: t.spacing["0"],
+            padding: t.spacing['0'],
             borderRadius: t.radii.full,
           },
         },
@@ -94,27 +94,27 @@ const buttonVariants = styled((ctx, t) =>
       disabled: {
         true: {
           root: {
-            opacity: t.opacity["50"],
-            pointerEvents: "none",
-            userSelect: "none",
+            opacity: t.opacity['50'],
+            pointerEvents: 'none',
+            userSelect: 'none',
           },
         },
         false: {
           root: {
-            opacity: t.opacity["100"],
-            pointerEvents: "auto",
-            userSelect: "auto",
+            opacity: t.opacity['100'],
+            pointerEvents: 'auto',
+            userSelect: 'auto',
           },
         },
       },
     },
     defaultVariants: {
-      size: "default",
-      variant: "default",
-      disabled: "false",
+      size: 'default',
+      variant: 'default',
+      disabled: 'false',
     },
   })
-);
+)
 
 function ButtonComponent({
   size,
@@ -125,10 +125,10 @@ function ButtonComponent({
   ...props
 }: ComponentProps<typeof TouchableOpacity> &
   VariantProps<typeof buttonVariants> & {
-    asChild?: boolean;
+    asChild?: boolean
   }) {
-  const Comp = asChild ? Slot : TouchableOpacity;
-  const styles = buttonVariants({ variant, size, disabled });
+  const Comp = asChild ? Slot : TouchableOpacity
+  const styles = buttonVariants({ variant, size, disabled })
 
   return (
     <TypographyProvider props={composeText(styles.root)}>
@@ -138,9 +138,9 @@ function ButtonComponent({
         {...props}
       />
     </TypographyProvider>
-  );
+  )
 }
 
-const Button = memo(ButtonComponent);
+const Button = memo(ButtonComponent)
 
-export { Button, buttonVariants };
+export { Button, buttonVariants }

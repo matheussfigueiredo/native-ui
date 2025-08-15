@@ -1,12 +1,12 @@
-import { cn } from "@/lib/cn";
-import { type VariantProps } from "native-variants";
-import { styled } from "@/lib/nva";
-import { type ComponentProps } from "react";
-import { View } from "react-native";
+import { cn } from '@/lib/cn'
+import { styled } from '@/lib/nva'
+import { type VariantProps } from 'native-variants'
+import { type ComponentProps } from 'react'
+import { View } from 'react-native'
 
 const separatorVariants = styled((ctx, t) =>
   ctx({
-    slots: ["root"],
+    slots: ['root'],
     base: {
       root: {
         backgroundColor: t.colors.border,
@@ -16,32 +16,32 @@ const separatorVariants = styled((ctx, t) =>
       orientation: {
         vertical: {
           root: {
-            height: "100%",
+            height: '100%',
             width: 0.5,
           },
         },
         horizontal: {
           root: {
-            width: "100%",
+            width: '100%',
             height: 0.5,
           },
         },
       },
     },
     defaultVariants: {
-      orientation: "horizontal",
+      orientation: 'horizontal',
     },
   })
-);
+)
 
 function Separator({
   style,
   orientation,
   ...props
 }: ComponentProps<typeof View> & VariantProps<typeof separatorVariants>) {
-  const styles = separatorVariants({ orientation });
+  const styles = separatorVariants({ orientation })
 
-  return <View style={cn(styles.root, style)} {...props} />;
+  return <View style={cn(styles.root, style)} {...props} />
 }
 
-export { Separator };
+export { Separator }

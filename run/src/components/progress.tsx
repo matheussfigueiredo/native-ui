@@ -1,37 +1,37 @@
-import { cn } from "@/lib/cn";
-import { type VariantProps } from "native-variants";
-import { styled } from "@/lib/nva";
-import { View, Text } from "react-native";
-import { type ComponentProps } from "react";
+import { cn } from '@/lib/cn'
+import { styled } from '@/lib/nva'
+import { type VariantProps } from 'native-variants'
+import { type ComponentProps } from 'react'
+import { Text, View } from 'react-native'
 
 type CommonProps = {
-  min: number;
-  value: number;
-  max: number;
-};
+  min: number
+  value: number
+  max: number
+}
 
 const progressVariants = styled((ctx, t) =>
   ctx({
-    slots: ["root", "wrapper", "bar", "label"],
+    slots: ['root', 'wrapper', 'bar', 'label'],
     base: {
       root: {
-        width: "100%",
-        display: "flex",
-        overflow: "hidden",
-        gap: t.spacing["1"],
-        flexDirection: "column",
+        width: '100%',
+        display: 'flex',
+        overflow: 'hidden',
+        gap: t.spacing['1'],
+        flexDirection: 'column',
       },
       wrapper: {
         borderRadius: t.radii.full,
         backgroundColor: t.colors.input,
       },
       bar: {
-        height: "100%",
+        height: '100%',
         borderRadius: t.radii.full,
         backgroundColor: t.colors.primary,
       },
       label: {
-        textAlign: "right",
+        textAlign: 'right',
         fontSize: t.fontSizes.xxs,
         color: t.colors.mutedForeground,
       },
@@ -56,16 +56,16 @@ const progressVariants = styled((ctx, t) =>
       },
     },
     defaultVariants: {
-      size: "default",
+      size: 'default',
     },
   })
-);
+)
 
 function getProgressValue(config: CommonProps): number {
-  const { max, min, value } = config;
+  const { max, min, value } = config
 
-  const clampedValue = Math.min(Math.max(value, min), max);
-  return max - min === 0 ? 0 : (clampedValue - min) / (max - min);
+  const clampedValue = Math.min(Math.max(value, min), max)
+  return max - min === 0 ? 0 : (clampedValue - min) / (max - min)
 }
 
 function Progress({
@@ -77,8 +77,8 @@ function Progress({
 }: ComponentProps<typeof View> &
   CommonProps &
   VariantProps<typeof progressVariants>) {
-  const styles = progressVariants({ size });
-  const progress = getProgressValue({ min, value, max });
+  const styles = progressVariants({ size })
+  const progress = getProgressValue({ min, value, max })
 
   return (
     <View style={styles.root} {...props}>
@@ -87,7 +87,7 @@ function Progress({
       </View>
       <Text style={styles.label}>{`${value} / ${max}`}</Text>
     </View>
-  );
+  )
 }
 
-export { Progress };
+export { Progress }

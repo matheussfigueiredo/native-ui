@@ -1,24 +1,24 @@
-import { type ComponentProps, memo } from "react";
-import { View } from "react-native";
-import { cn } from "@/lib/cn";
-import { styled } from "@/lib/nva";
-import { type VariantProps, composeText } from "native-variants";
-import { TypographyProvider } from "./typography";
+import { cn } from '@/lib/cn'
+import { styled } from '@/lib/nva'
+import { composeText, type VariantProps } from 'native-variants'
+import { type ComponentProps, memo } from 'react'
+import { View } from 'react-native'
+import { TypographyProvider } from './typography'
 
 const badgeVariants = styled((ctx, t) =>
   ctx({
-    slots: ["root", "text"],
+    slots: ['root', 'text'],
     base: {
       root: {
         borderWidth: 1,
-        display: "flex",
-        fontWeight: "400",
-        textAlign: "center",
-        alignItems: "center",
-        flexDirection: "row",
-        justifyContent: "center",
+        display: 'flex',
+        fontWeight: '400',
+        textAlign: 'center',
+        alignItems: 'center',
+        flexDirection: 'row',
+        justifyContent: 'center',
         borderRadius: t.radii.lg,
-        textAlignVertical: "center",
+        textAlignVertical: 'center',
       },
     },
     variants: {
@@ -63,7 +63,7 @@ const badgeVariants = styled((ctx, t) =>
         default: {
           root: {
             height: 30,
-            paddingHorizontal: t.spacing["3.5"],
+            paddingHorizontal: t.spacing['3.5'],
             fontSize: t.fontSizes.xxs,
           },
         },
@@ -71,24 +71,24 @@ const badgeVariants = styled((ctx, t) =>
           root: {
             height: 26,
             fontSize: t.fontSizes.xxs,
-            paddingHorizontal: t.spacing["2.5"],
+            paddingHorizontal: t.spacing['2.5'],
           },
         },
         lg: {
           root: {
             height: 34,
             fontSize: t.fontSizes.xxs,
-            paddingHorizontal: t.spacing["2.5"],
+            paddingHorizontal: t.spacing['2.5'],
           },
         },
       },
     },
     defaultVariants: {
-      size: "default",
-      variant: "default",
+      size: 'default',
+      variant: 'default',
     },
   })
-);
+)
 
 function BadgeComponent({
   size,
@@ -96,15 +96,15 @@ function BadgeComponent({
   variant,
   ...props
 }: ComponentProps<typeof View> & VariantProps<typeof badgeVariants>) {
-  const styles = badgeVariants({ variant, size });
+  const styles = badgeVariants({ variant, size })
 
   return (
     <TypographyProvider props={composeText(styles.root)}>
       <View style={cn(styles.root, style as any)} {...props} />
     </TypographyProvider>
-  );
+  )
 }
 
-const Badge = memo(BadgeComponent);
+const Badge = memo(BadgeComponent)
 
-export { Badge, badgeVariants };
+export { Badge, badgeVariants }

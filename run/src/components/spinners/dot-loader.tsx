@@ -1,26 +1,26 @@
-import { ComponentProps, memo, useEffect } from "react";
-import { View } from "react-native";
+import { cn } from '@/lib/cn'
+import { styled } from '@/lib/nva'
+import { type VariantProps } from 'native-variants'
+import { ComponentProps, memo, useEffect } from 'react'
+import { View } from 'react-native'
 import Animated, {
   Easing,
-  useSharedValue,
   useAnimatedStyle,
+  useSharedValue,
   withDelay,
   withRepeat,
   withSequence,
   withTiming,
-} from "react-native-reanimated";
-import { styled } from "@/lib/nva";
-import { cn } from "@/lib/cn";
-import { type VariantProps } from "native-variants";
+} from 'react-native-reanimated'
 
 const dotsVariants = styled((ctx, t) =>
   ctx({
-    slots: ["root", "dot"],
+    slots: ['root', 'dot'],
     base: {
       root: {
-        flexDirection: "row",
-        alignItems: "center",
-        gap: t.spacing["1.5"],
+        flexDirection: 'row',
+        alignItems: 'center',
+        gap: t.spacing['1.5'],
       },
       dot: {
         borderRadius: t.radii.full,
@@ -36,15 +36,15 @@ const dotsVariants = styled((ctx, t) =>
       color: {
         primary: { dot: { backgroundColor: t.colors.primary } },
         secondary: { dot: { backgroundColor: t.colors.secondary } },
-        white: { dot: { backgroundColor: "#fff" } },
+        white: { dot: { backgroundColor: '#fff' } },
       },
     },
     defaultVariants: {
-      size: "default",
-      color: "primary",
+      size: 'default',
+      color: 'primary',
     },
   })
-);
+)
 
 function DotsSpinnerComponent({
   style,
@@ -53,11 +53,11 @@ function DotsSpinnerComponent({
   duration = 1000,
   ...props
 }: ComponentProps<typeof View> & {
-  duration?: number;
+  duration?: number
 } & VariantProps<typeof dotsVariants>) {
-  const styles = dotsVariants({ size, color });
+  const styles = dotsVariants({ size, color })
 
-  const scales = [useSharedValue(1), useSharedValue(1), useSharedValue(1)];
+  const scales = [useSharedValue(1), useSharedValue(1), useSharedValue(1)]
 
   useEffect(() => {
     scales.forEach((scale, index) => {
@@ -71,15 +71,15 @@ function DotsSpinnerComponent({
           -1,
           false
         )
-      );
-    });
-  }, [duration]);
+      )
+    })
+  }, [duration])
 
   const dotStyles = scales.map((scale) =>
     useAnimatedStyle(() => ({
       transform: [{ scale: scale.value }],
     }))
-  );
+  )
 
   return (
     <View style={cn(styles.root, style)} {...props}>
@@ -87,9 +87,9 @@ function DotsSpinnerComponent({
       <Animated.View style={[styles.dot, dotStyles[1]]} />
       <Animated.View style={[styles.dot, dotStyles[2]]} />
     </View>
-  );
+  )
 }
 
-const DotsSpinner = memo(DotsSpinnerComponent);
+const DotsSpinner = memo(DotsSpinnerComponent)
 
-export { DotsSpinner };
+export { DotsSpinner }

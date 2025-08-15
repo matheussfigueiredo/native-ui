@@ -1,5 +1,5 @@
-import { type ComponentProps } from "react";
-import { ScrollView } from "react-native";
+import { type ComponentProps } from 'react'
+import { ScrollView } from 'react-native'
 
 function ScrollArea({ ...props }: ComponentProps<typeof ScrollView>) {
   return (
@@ -8,7 +8,7 @@ function ScrollArea({ ...props }: ComponentProps<typeof ScrollView>) {
       showsHorizontalScrollIndicator={false}
       {...props}
     />
-  );
+  )
 }
 
-export { ScrollArea };
+export { ScrollArea }

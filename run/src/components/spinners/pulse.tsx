@@ -1,5 +1,7 @@
-import React, { ComponentProps, memo, useEffect } from "react";
-import { View } from "react-native";
+import { styled } from '@/lib/nva'
+import type { VariantProps } from 'native-variants'
+import { type ComponentProps, memo, useEffect } from 'react'
+import { View } from 'react-native'
 import Animated, {
   Easing,
   useAnimatedStyle,
@@ -7,13 +9,11 @@ import Animated, {
   withRepeat,
   withSequence,
   withTiming,
-} from "react-native-reanimated";
-import { styled } from "@/lib/nva";
-import { VariantProps } from "native-variants";
+} from 'react-native-reanimated'
 
 const pulseVariants = styled((ctx, t) =>
   ctx({
-    slots: ["root"],
+    slots: ['root'],
     base: {
       root: {
         borderRadius: 9999,
@@ -29,15 +29,15 @@ const pulseVariants = styled((ctx, t) =>
       color: {
         primary: { root: { backgroundColor: t.colors.primary } },
         secondary: { root: { backgroundColor: t.colors.secondary } },
-        white: { root: { backgroundColor: "#fff" } },
+        white: { root: { backgroundColor: '#fff' } },
       },
     },
     defaultVariants: {
-      size: "default",
-      color: "primary",
+      size: 'default',
+      color: 'primary',
     },
   })
-);
+)
 
 function PulseComponent({
   style,
@@ -46,19 +46,19 @@ function PulseComponent({
   duration = 1500,
   ...props
 }: ComponentProps<typeof View> & {
-  duration?: number;
+  duration?: number
 } & VariantProps<typeof pulseVariants>) {
-  const styles = pulseVariants({ size, color });
+  const styles = pulseVariants({ size, color })
 
-  const scale = useSharedValue(0.4);
-  const rotation = useSharedValue(0);
+  const scale = useSharedValue(0.4)
+  const rotation = useSharedValue(0)
 
   useEffect(() => {
     rotation.value = withRepeat(
       withTiming(360, { duration, easing: Easing.linear }),
       -1,
       false
-    );
+    )
 
     scale.value = withRepeat(
       withSequence(
@@ -67,20 +67,21 @@ function PulseComponent({
       ),
       -1,
       false
-    );
-  }, [duration]);
+    )
+  }, [duration])
 
   const animatedStyle = useAnimatedStyle(() => {
     return {
       transform: [{ rotate: `${rotation.value}deg` }, { scale: scale.value }],
-    };
-  });
+    }
+  })
 
   return (
+    //@ts-ignore
     <Animated.View style={[styles.root, animatedStyle, style]} {...props} />
-  );
+  )
 }
 
-const Pulse = memo(PulseComponent);
+const Pulse = memo(PulseComponent)
 
-export { Pulse };
+export { Pulse }

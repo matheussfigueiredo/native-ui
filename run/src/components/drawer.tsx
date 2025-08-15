@@ -1,43 +1,43 @@
-import { cn } from "@/lib/cn";
-import { type VariantProps, createCTX } from "native-variants";
-import { styled, theme } from "@/lib/nva";
+import { cn } from '@/lib/cn'
+import { styled, theme } from '@/lib/nva'
 import {
   BottomSheetBackdrop,
   BottomSheetBackdropProps,
   BottomSheetModal,
   BottomSheetModalProvider,
   BottomSheetView,
-} from "@gorhom/bottom-sheet";
-import { BottomSheetModalMethods } from "@gorhom/bottom-sheet/lib/typescript/types";
+} from '@gorhom/bottom-sheet'
+import { BottomSheetModalMethods } from '@gorhom/bottom-sheet/lib/typescript/types'
+import { createCTX, type VariantProps } from 'native-variants'
 import {
   type ComponentProps,
   memo,
   type PropsWithChildren,
   type RefObject,
   useCallback,
-} from "react";
-import { Platform, View } from "react-native";
-import { useSafeAreaInsets } from "react-native-safe-area-context";
-import { Button } from "./button";
-import { Icon } from "./icon";
+} from 'react'
+import { Platform, View } from 'react-native'
+import { useSafeAreaInsets } from 'react-native-safe-area-context'
+import { Button } from './button'
+import { Icon } from './icon'
 
 type CommonProps = {
-  sheetRef?: RefObject<BottomSheetModalMethods<any> | null>;
-};
+  sheetRef?: RefObject<BottomSheetModalMethods<any> | null>
+}
 
 const { CTXProvider, useCTX } = createCTX<
   VariantProps<typeof drawerVariants> & CommonProps
->();
+>()
 
 const drawerVariants = styled((ctx, t) =>
   ctx({
     slots: [
-      "root",
-      "handler",
-      "wrapper",
-      "handler_indicator",
-      "header",
-      "content",
+      'root',
+      'handler',
+      'wrapper',
+      'handler_indicator',
+      'header',
+      'content',
     ],
     base: {
       handler: {
@@ -48,17 +48,17 @@ const drawerVariants = styled((ctx, t) =>
         backgroundColor: t.colors.border,
       },
       header: {
-        display: "flex",
-        alignItems: "flex-start",
-        justifyContent: "flex-start",
-        paddingBottom: t.spacing["2"],
-        paddingHorizontal: t.spacing["3.5"],
-        paddingTop: Platform.OS === "ios" ? t.spacing["2"] : t.spacing["3"],
+        display: 'flex',
+        alignItems: 'flex-start',
+        justifyContent: 'flex-start',
+        paddingBottom: t.spacing['2'],
+        paddingHorizontal: t.spacing['3.5'],
+        paddingTop: Platform.OS === 'ios' ? t.spacing['2'] : t.spacing['3'],
       },
       content: {
-        paddingBottom: t.spacing["6"],
-        paddingHorizontal: t.spacing["6"],
-        paddingTop: t.spacing["2"],
+        paddingBottom: t.spacing['6'],
+        paddingHorizontal: t.spacing['6'],
+        paddingTop: t.spacing['2'],
       },
     },
     variants: {
@@ -68,38 +68,38 @@ const drawerVariants = styled((ctx, t) =>
             borderRadius: 0,
           },
           content: {
-            height: "100%",
+            height: '100%',
           },
           handler_indicator: {
-            display: "none",
+            display: 'none',
             padding: 0,
           },
           wrapper: {
-            height: "100%",
+            height: '100%',
           },
         },
         false: {
           root: {
-            borderRadius: t.radii["xl"],
+            borderRadius: t.radii['xl'],
           },
           content: {
-            height: "auto",
+            height: 'auto',
           },
           handler_indicator: {
-            marginTop: t.radii["xl"],
+            marginTop: t.radii['xl'],
             paddingBottom: 0,
           },
           wrapper: {
-            height: "auto",
+            height: 'auto',
           },
         },
       },
     },
     defaultVariants: {
-      fullScreen: "false",
+      fullScreen: 'false',
     },
   })
-);
+)
 
 function Drawer({
   children,
@@ -112,7 +112,7 @@ function Drawer({
     <BottomSheetModalProvider>
       <CTXProvider props={{ fullScreen, sheetRef }}>{children}</CTXProvider>
     </BottomSheetModalProvider>
-  );
+  )
 }
 
 function DrawerComponent({
@@ -122,15 +122,15 @@ function DrawerComponent({
   ...props
 }: ComponentProps<typeof BottomSheetModal> &
   PropsWithChildren & {
-    asChild?: boolean;
+    asChild?: boolean
   }) {
-  const ctx = useCTX();
-  const insets = useSafeAreaInsets();
-  const styles = drawerVariants({ fullScreen: ctx?.fullScreen });
+  const ctx = useCTX()
+  const insets = useSafeAreaInsets()
+  const styles = drawerVariants({ fullScreen: ctx?.fullScreen })
 
   const onClose = useCallback(() => {
-    ctx?.sheetRef?.current?.close();
-  }, [ctx?.sheetRef]);
+    ctx?.sheetRef?.current?.close()
+  }, [ctx?.sheetRef])
 
   return (
     <BottomSheetModal
@@ -144,7 +144,7 @@ function DrawerComponent({
       handleIndicatorStyle={styles.handler_indicator}
       enableHandlePanningGesture={!ctx?.fullScreen}
       enableContentPanningGesture={!ctx?.fullScreen}
-      snapPoints={!ctx?.fullScreen ? undefined : ["100%"]}
+      snapPoints={!ctx?.fullScreen ? undefined : ['100%']}
       backdropComponent={(props: BottomSheetBackdropProps) => (
         <BottomSheetBackdrop
           opacity={0.5}
@@ -163,7 +163,7 @@ function DrawerComponent({
           },
           {
             paddingBottom:
-              Platform.OS === "ios" ? theme.spacing["4"] : insets.bottom,
+              Platform.OS === 'ios' ? theme.spacing['4'] : insets.bottom,
           }
         )}
       >
@@ -193,9 +193,9 @@ function DrawerComponent({
         )}
       </BottomSheetView>
     </BottomSheetModal>
-  );
+  )
 }
 
-const DrawerContent = memo(DrawerComponent);
+const DrawerContent = memo(DrawerComponent)
 
-export { DrawerContent, Drawer };
+export { Drawer, DrawerContent }

@@ -1,12 +1,30 @@
 {
   "$schema": "https://biomejs.dev/schemas/2.1.2/schema.json",
-  "extends": [
-    "ultracite"
-  ],
-    "javascript": {
+  "extends": ["ultracite"],
+  "javascript": {
     "formatter": {
       "semicolons": "asNeeded",
       "indentWidth": 2
+    }
+  },
+  "linter": {
+    "rules": {
+      "nursery": {
+        "noTsIgnore": "off",
+        "useJsonImportAttribute": "off"
+      },
+      "performance": {
+        "useTopLevelRegex": "off",
+        "noAccumulatingSpread": "off"
+      },
+      "correctness": {
+        "useExhaustiveDependencies": "off",
+        "useHookAtTopLevel": "off"
+      },
+      "style": {
+        "useImportType": "off",
+        "useBlockStatements": "off"
+      }
     }
   }
 }

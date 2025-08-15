@@ -1,42 +1,42 @@
-import { cn } from "@/lib/cn";
-import { styled } from "@/lib/nva";
-import { type ComponentProps, useEffect, useState } from "react";
-import { TouchableOpacity, View } from "react-native";
-import { TypographyProvider } from "./typography";
-import { composeText, createCTX } from "native-variants";
+import { cn } from '@/lib/cn'
+import { styled } from '@/lib/nva'
+import { composeText, createCTX } from 'native-variants'
+import { type ComponentProps, useEffect, useState } from 'react'
+import { TouchableOpacity, View } from 'react-native'
+import { TypographyProvider } from './typography'
 
 type CommonProps = {
-  value?: string;
-  onChange?: (input: string) => void;
-};
+  value?: string
+  onChange?: (input: string) => void
+}
 
-const { CTXProvider, useCTX } = createCTX<CommonProps>();
+const { CTXProvider, useCTX } = createCTX<CommonProps>()
 
 const tabsVariants = styled((ctx, t) =>
   ctx({
-    slots: ["root", "list", "trigger", "content"],
+    slots: ['root', 'list', 'trigger', 'content'],
     base: {
       root: {
-        display: "flex",
-        flexDirection: "column",
+        display: 'flex',
+        flexDirection: 'column',
       },
       list: {
         height: 40,
-        display: "flex",
-        flexDirection: "row",
+        display: 'flex',
+        flexDirection: 'row',
       },
       trigger: {
         flex: 1,
-        width: "100%",
-        height: "100%",
-        display: "flex",
-        textAlign: "center",
-        alignItems: "center",
-        flexDirection: "row",
+        width: '100%',
+        height: '100%',
+        display: 'flex',
+        textAlign: 'center',
+        alignItems: 'center',
+        flexDirection: 'row',
         borderBottomWidth: 2,
         fontSize: t.fontSizes.sm,
-        justifyContent: "center",
-        textAlignVertical: "center",
+        justifyContent: 'center',
+        textAlignVertical: 'center',
       },
       content: {},
     },
@@ -58,16 +58,16 @@ const tabsVariants = styled((ctx, t) =>
       disabled: {
         true: {
           trigger: {
-            opacity: t.opacity["50"],
-            pointerEvents: "none",
-            userSelect: "none",
+            opacity: t.opacity['50'],
+            pointerEvents: 'none',
+            userSelect: 'none',
           },
         },
         false: {
           trigger: {
-            opacity: t.opacity["100"],
-            pointerEvents: "auto",
-            userSelect: "auto",
+            opacity: t.opacity['100'],
+            pointerEvents: 'auto',
+            userSelect: 'auto',
           },
         },
       },
@@ -77,7 +77,7 @@ const tabsVariants = styled((ctx, t) =>
       disabled: false,
     },
   })
-);
+)
 
 function Tabs({
   style,
@@ -87,25 +87,25 @@ function Tabs({
   ...props
 }: ComponentProps<typeof View> &
   CommonProps & {
-    defaultValue?: string;
+    defaultValue?: string
   }) {
-  const styles = tabsVariants();
+  const styles = tabsVariants()
 
   const [internalValue, setInternalValue] = useState<string | undefined>(
     value ?? defaultValue
-  );
+  )
 
   useEffect(() => {
-    if (value !== undefined) setInternalValue(value);
-  }, [value]);
+    if (value !== undefined) setInternalValue(value)
+  }, [value])
 
   const handleInternalChange = (input: string) => {
     if (onChange) {
-      onChange(input);
+      onChange(input)
     } else {
-      setInternalValue(input);
+      setInternalValue(input)
     }
-  };
+  }
 
   return (
     <CTXProvider
@@ -116,7 +116,7 @@ function Tabs({
     >
       <View style={cn(styles.root, style)} {...props} />
     </CTXProvider>
-  );
+  )
 }
 
 function TabsTrigger({
@@ -125,16 +125,16 @@ function TabsTrigger({
   disabled = false,
   ...props
 }: ComponentProps<typeof TouchableOpacity> & {
-  value: string;
+  value: string
 }) {
-  const ctx = useCTX();
-  const styles = tabsVariants({ active: ctx?.value === value, disabled });
+  const ctx = useCTX()
+  const styles = tabsVariants({ active: ctx?.value === value, disabled })
 
   const handleInternalChange = () => {
     if (value !== ctx?.value) {
-      ctx?.onChange?.(value);
+      ctx?.onChange?.(value)
     }
-  };
+  }
 
   return (
     <TypographyProvider props={composeText(styles.trigger)}>
@@ -144,13 +144,13 @@ function TabsTrigger({
         {...props}
       />
     </TypographyProvider>
-  );
+  )
 }
 
 function TabsList({ style, ...props }: ComponentProps<typeof View>) {
-  const styles = tabsVariants();
+  const styles = tabsVariants()
 
-  return <View style={cn(styles.list, style)} {...props} />;
+  return <View style={cn(styles.list, style)} {...props} />
 }
 
 function TabsContent({
@@ -160,31 +160,31 @@ function TabsContent({
   children,
   ...props
 }: ComponentProps<typeof View> & {
-  value: string;
-  keepMounted?: boolean;
+  value: string
+  keepMounted?: boolean
 }) {
-  const ctx = useCTX();
-  const base = tabsVariants();
-  const isActive = ctx?.value === value;
+  const ctx = useCTX()
+  const base = tabsVariants()
+  const isActive = ctx?.value === value
 
   if (keepMounted) {
     return (
       <View
-        style={cn(base.content, !isActive && { display: "none" }, style)}
+        style={cn(base.content, !isActive && { display: 'none' }, style)}
         {...props}
       >
         {children}
       </View>
-    );
+    )
   }
 
-  if (!isActive) return null;
+  if (!isActive) return null
 
   return (
     <View style={cn(base.content, style)} {...props}>
       {children}
     </View>
-  );
+  )
 }
 
-export { Tabs, TabsTrigger, TabsList, TabsContent };
+export { Tabs, TabsContent, TabsList, TabsTrigger }

@@ -1,31 +1,31 @@
-import { type ComponentProps, memo } from "react";
-import { TextInput, View } from "react-native";
-import { useInteractive } from "@/hooks/use-interactive";
-import { cn } from "@/lib/cn";
-import { styled, theme } from "@/lib/nva";
-import { alpha, type VariantProps } from "native-variants";
+import { useInteractive } from '@/hooks/use-interactive'
+import { cn } from '@/lib/cn'
+import { styled, theme } from '@/lib/nva'
+import { alpha, type VariantProps } from 'native-variants'
+import { type ComponentProps, memo } from 'react'
+import { TextInput, View } from 'react-native'
 
 const textAreaVariants = styled((ctx, t) =>
   ctx({
-    slots: ["root", "field", "textarea", "icon", "placeholder"],
+    slots: ['root', 'field', 'textarea', 'icon', 'placeholder'],
     base: {
       root: {
         minHeight: 120,
         borderWidth: 1,
-        display: "flex",
-        flexDirection: "row",
+        display: 'flex',
+        flexDirection: 'row',
         borderRadius: t.radii.lg,
-        paddingLeft: t.spacing["4"],
-        justifyContent: "flex-start",
-        alignItems: "flex-start",
+        paddingLeft: t.spacing['4'],
+        justifyContent: 'flex-start',
+        alignItems: 'flex-start',
       },
       field: { flex: 1 },
       textarea: {
         flex: 1,
-        height: "100%",
-        textAlignVertical: "top",
-        paddingRight: t.spacing["4"],
-        paddingTop: theme?.spacing["2"],
+        height: '100%',
+        textAlignVertical: 'top',
+        paddingRight: t.spacing['4'],
+        paddingTop: theme?.spacing['2'],
         borderTopEndRadius: t.radii.lg,
         borderBottomEndRadius: t.radii.lg,
       },
@@ -59,36 +59,36 @@ const textAreaVariants = styled((ctx, t) =>
       disabled: {
         true: {
           root: {
-            opacity: t.opacity["50"],
-            pointerEvents: "none",
-            userSelect: "none",
+            opacity: t.opacity['50'],
+            pointerEvents: 'none',
+            userSelect: 'none',
           },
         },
         false: {
           root: {
-            opacity: t.opacity["100"],
-            pointerEvents: "auto",
-            userSelect: "auto",
+            opacity: t.opacity['100'],
+            pointerEvents: 'auto',
+            userSelect: 'auto',
           },
         },
       },
     },
     defaultVariants: {
-      size: "default",
+      size: 'default',
       focus: false,
       disabled: false,
     },
   })
-);
+)
 
 function TextAreaComponent({
   style,
   disabled,
   ...props
-}: Omit<ComponentProps<typeof TextInput>, "editable"> &
+}: Omit<ComponentProps<typeof TextInput>, 'editable'> &
   VariantProps<typeof textAreaVariants>) {
-  const { focus, onFocus, onBlur } = useInteractive();
-  const { root, textarea, placeholder } = textAreaVariants({ focus, disabled });
+  const { focus, onFocus, onBlur } = useInteractive()
+  const { root, textarea, placeholder } = textAreaVariants({ focus, disabled })
 
   return (
     <View style={cn(root, style) as any}>
@@ -99,15 +99,15 @@ function TextAreaComponent({
         editable={!disabled}
         placeholderTextColor={placeholder?.color}
         style={cn(textarea, style, {
-          height: "100%",
-          textAlignVertical: "top",
+          height: '100%',
+          textAlignVertical: 'top',
         })}
         {...props}
       />
     </View>
-  );
+  )
 }
 
-const TextArea = memo(TextAreaComponent);
+const TextArea = memo(TextAreaComponent)
 
-export { TextArea };
+export { TextArea }
