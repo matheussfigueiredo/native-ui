@@ -1,0 +1,318 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "name": "nativeui",
+  "homepage": "https://github.com/matheussfigueiredo/native-ui",
+  "items": [
+    {
+      "name": "avatar",
+      "title": "Avatar",
+      "type": "registry:ui",
+      "description": "Avatar component",
+      "dependencies": ["react-native", "native-variants", "react"],
+      "files": [
+        {
+          "path": "ui/components/avatar.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "badge",
+      "title": "Badge",
+      "type": "registry:ui",
+      "description": "Badge component",
+      "dependencies": ["react-native", "native-variants", "react"],
+      "files": [
+        {
+          "path": "ui/components/badge.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "button",
+      "title": "button",
+      "type": "registry:ui",
+      "description": "Button component",
+      "dependencies": ["react-native", "native-variants", "react"],
+      "files": [
+        {
+          "path": "ui/components/button.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "card",
+      "title": "card",
+      "type": "registry:ui",
+      "description": "Card component",
+      "dependencies": ["react-native", "native-variants", "react"],
+      "files": [
+        {
+          "path": "ui/components/card.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "collapsible",
+      "title": "collapsible",
+      "type": "registry:ui",
+      "description": "Collapsible component",
+      "dependencies": ["react-native", "native-variants", "react"],
+      "files": [
+        {
+          "path": "ui/components/collapsible.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "drawer",
+      "title": "drawer",
+      "type": "registry:ui",
+      "description": "Drawer component",
+      "dependencies": ["react-native", "native-variants", "react"],
+      "files": [
+        {
+          "path": "ui/components/drawer.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "flex",
+      "title": "flex",
+      "type": "registry:ui",
+      "description": "Flex component",
+      "dependencies": ["react-native", "native-variants", "react"],
+      "files": [
+        {
+          "path": "ui/components/flex.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "form",
+      "title": "form",
+      "type": "registry:ui",
+      "description": "Form component",
+      "dependencies": ["react-native", "native-variants", "react"],
+      "files": [
+        {
+          "path": "ui/components/form.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "icon",
+      "title": "icon",
+      "description": "Icon component",
+      "type": "registry:ui",
+      "dependencies": ["react-native", "native-variants", "react"],
+      "files": [
+        {
+          "path": "ui/components/icon.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/lib/icons.json",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "input",
+      "title": "input",
+      "type": "registry:ui",
+      "description": "Input component",
+      "dependencies": ["react-native", "native-variants", "react"],
+      "files": [
+        {
+          "path": "ui/components/input.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/hooks/use-interactive.ts",
+          "type": "registry:hook"
+        }
+      ]
+    },
+    {
+      "name": "progress",
+      "title": "progress",
+      "type": "registry:ui",
+      "description": "Progress component",
+      "dependencies": ["react-native", "native-variants", "react"],
+      "files": [
+        {
+          "path": "ui/components/progress.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "radio",
+      "title": "radio",
+      "type": "registry:ui",
+      "description": "Radio component",
+      "dependencies": ["react-native", "native-variants", "react"],
+      "files": [
+        {
+          "path": "ui/components/radio.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "scroll-area",
+      "title": "scroll-area",
+      "type": "registry:ui",
+      "description": "ScrollArea component",
+      "dependencies": ["react-native", "native-variants", "react"],
+      "files": [
+        {
+          "path": "ui/components/scroll-area.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "select",
+      "title": "select",
+      "type": "registry:ui",
+      "description": "Select component",
+      "dependencies": ["react-native", "native-variants", "react"],
+      "files": [
+        {
+          "path": "ui/components/select.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "separator",
+      "title": "separator",
+      "type": "registry:ui",
+      "description": "Separator component",
+      "dependencies": ["react-native", "native-variants", "react"],
+      "files": [
+        {
+          "path": "ui/components/separator.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "skeleton",
+      "title": "skeleton",
+      "type": "registry:ui",
+      "description": "Skeleton component",
+      "dependencies": ["react-native", "native-variants", "react"],
+      "files": [
+        {
+          "path": "ui/components/skeleton.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "slot",
+      "title": "slot",
+      "type": "registry:ui",
+      "description": "Slot component",
+      "dependencies": ["react-native", "native-variants", "react"],
+      "files": [
+        {
+          "path": "ui/components/slot.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "switch",
+      "title": "switch",
+      "type": "registry:ui",
+      "description": "Switch component",
+      "dependencies": ["react-native", "native-variants", "react"],
+      "files": [
+        {
+          "path": "ui/components/switch.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "tabs",
+      "title": "tabs",
+      "type": "registry:ui",
+      "description": "Tabs component",
+      "dependencies": ["react-native", "native-variants", "react"],
+      "files": [
+        {
+          "path": "ui/components/tabs.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "textarea",
+      "title": "textarea",
+      "type": "registry:ui",
+      "description": "TextArea component",
+      "dependencies": ["react-native", "native-variants", "react"],
+      "files": [
+        {
+          "path": "ui/components/textarea.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "ui/hooks/use-interactive.ts",
+          "type": "registry:hook"
+        }
+      ]
+    },
+    {
+      "name": "typography",
+      "title": "typography",
+      "type": "registry:ui",
+      "description": "Typography component",
+      "dependencies": ["react-native", "native-variants", "react"],
+      "files": [
+        {
+          "path": "ui/components/typography.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "cn",
+      "title": "cn",
+      "type": "registry:lib",
+      "dependencies": ["react-native", "native-variants", "react"],
+      "description": "Utility for classNames",
+      "files": [
+        {
+          "path": "ui/lib/cn.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "nva",
+      "title": "nva",
+      "type": "registry:lib",
+      "dependencies": ["react-native", "native-variants", "react"],
+      "description": "Utility for variant classNames",
+      "files": [
+        {
+          "path": "ui/lib/nva.ts",
+          "type": "registry:lib"
+        }
+      ]
+    }
+  ]
+}
